@@ -1,5 +1,5 @@
 [![FIWARE Banner](https://fiware.github.io/tutorials.CRUD-Operations/img/fiware.png)](https://www.fiware.org/developers)
-[![NGSI LD](https://img.shields.io/badge/NGSI-LD-d6604d.svg)](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.01_60/gs_cim009v010401p.pdf)
+[![NGSI LD](https://img.shields.io/badge/NGSI-LD-d6604d.svg)](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.02_60/gs_cim009v010402p.pdf)
 
 [![FIWARE Core Context Management](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/core.svg)](https://github.com/FIWARE/catalogue/blob/master/core/README.md)
 [![License: MIT](https://img.shields.io/github/license/fiware/tutorials.CRUD-Operations.svg)](https://opensource.org/licenses/MIT)
@@ -8,7 +8,7 @@
 [![Documentation](https://img.shields.io/readthedocs/ngsi-ld-tutorials.svg)](https://ngsi-ld-tutorials.rtfd.io)
 
 このチュートリアルでは、 **NGSI-LD** ユーザに CRUD 操作について説明します。このチュートリアルでは、
-[NGSI-LD 仕様](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.01_60/gs_cim009v010401p.pdf)で詳しく
+[NGSI-LD 仕様](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.02_60/gs_cim009v010402p.pdf)で詳しく
 説明されているように、コンテキストを修正するさまざまな方法の使用例の概要を説明しています。以前のチュートリアルで定義した
 温度センサ・モデルに基づいて、温度センサを表す一連のエンティティが作成、変更、削除されます。
 
@@ -69,7 +69,7 @@
 **CRUD** 操作 (**Create**, **Read**, **Update**, **Delete**) は、永続ストレージの4つの基本機能です。**NGSI-LD** に
 基づくスマート・システムの場合、**CRUD** アクションにより、開発者はシステム内のコンテキスト・データを操作できます。
 すべての **CRUD** 操作は
-[NGSI-LD 仕様](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.01_60/gs_cim009v010401p.pdf)
+[NGSI-LD 仕様](https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.04.02_60/gs_cim009v010402p.pdf)
 内で明確に定義されているため、すべての NGSI-LD 準拠の Context Broker は、同じ NGSI-LD 操作で同じインターフェースを
 提供します。
 
@@ -368,7 +368,7 @@ curl -L -X GET 'http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Temperatur
 curl -iX POST 'http://localhost:1026/ngsi-ld/v1/entityOperations/create' \
 -H 'Content-Type: application/json' \
 -H 'Link: <http://context-provider:3000/data-models/ngsi-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"' \
--H 'Accept: application/ld+json' \
+-H 'Accept: application/json' \
 --data-raw '[
     {
       "id": "urn:ngsi-ld:TemperatureSensor:002",
@@ -416,15 +416,11 @@ curl -iX POST 'http://localhost:1026/ngsi-ld/v1/entityOperations/create' \
 (発生した場合) が強調表示されます。
 
 ```jsonld
-{
-    "@context": "http://context-provider:3000/data-models/ngsi-context.jsonld",
-    "success": [
-        "urn:ngsi-ld:TemperatureSensor:002",
-        "urn:ngsi-ld:TemperatureSensor:003",
-        "urn:ngsi-ld:TemperatureSensor:004"
-    ],
-    "errors": []
-}
+[
+  "urn:ngsi-ld:TemperatureSensor:002",
+  "urn:ngsi-ld:TemperatureSensor:003",
+  "urn:ngsi-ld:TemperatureSensor:004"
+]
 ```
 
 <a name="batch-createoverwrite-new-data-entities"/>
@@ -1125,4 +1121,4 @@ NGSILD-Results-Count: 1
 
 ## License
 
-[MIT](LICENSE) © 2020 FIWARE Foundation e.V.
+[MIT](LICENSE) © 2020-2021 FIWARE Foundation e.V.
